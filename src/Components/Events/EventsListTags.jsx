@@ -1,85 +1,131 @@
 import React, { useState, useEffect } from "react";
 import { List, Avatar, Button, Skeleton } from "antd";
-
-const count = 3;
-const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat,picture&noinfo`;
-
-export default function EventsListCards() {
-  const [state, setState] = useState({
+import clsx from "clsx";
+import { getTags } from "../../Api/apis";
+import style from "./index.module.css";
+export default function EventsListCards({ setTagsToMainState }) {
+  const count = 10;
+  const [tags, setTags] = useState({
     initLoading: true,
     loading: false,
     data: [],
     list: [],
   });
   useEffect(() => {
-    fetch(fakeDataUrl)
-      .then((res) => res.json())
-      .then((res) => {
-        setState({
-          initLoading: false,
-          data: res.results,
-          list: res.results,
+    getTags().then((res) => {
+      let data = [];
+      // eslint-disable-next-line array-callback-return
+      res.data.data.tags.slice(0, count).map((e) => {
+        data.push({
+          tag: e,
+          isSelected: false,
         });
       });
-  }, [setState]);
+      setTags({
+        initLoading: false,
+        data: data,
+        list: data,
+      });
+    });
+  }, [setTags]);
+  useEffect(() => {
+    let data = tags.list.filter((e) => {
+      if (e.isSelected) {
+        return e;
+      }
+    });
+    setTagsToMainState(data);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tags, setTags]);
 
   const onLoadMore = () => {
-    setState({
+    setTags({
       loading: true,
-      list: state.data.concat(
+      list: tags.data.concat(
         [...new Array(count)].map(() => ({
           loading: true,
-          name: {},
-          picture: {},
         }))
       ),
     });
-    fetch(fakeDataUrl)
-      .then((res) => res.json())
-      .then((res) => {
-        const data = state.data.concat(res.results);
-        setState(
-          {
-            data,
-            list: data,
-            loading: false,
-          },
-          () => {
-            // Resetting window's offsetTop so as to display react-virtualized demo underfloor.
-            // In real scene, you can using public method of react-virtualized:
-            // https://stackoverflow.com/questions/46700726/how-to-use-public-method-updateposition-of-react-virtualized
-            window.dispatchEvent(new Event("resize"));
-          }
-        );
-      });
+    getTags().then((res) => {
+      const data = tags.data.concat(
+        res.data.data.tags.slice(count).map((e) => {
+          return {
+            tag: e,
+            isSelected: false,
+          };
+        })
+      );
+      setTags(
+        {
+          data,
+          list: data,
+          loading: false,
+          initLoading: true,
+        },
+        () => {
+          // Resetting window's offsetTop so as to display react-virtualized demo underfloor.
+          // In real scene, you can using public method of react-virtualized:
+          // https://stackoverflow.com/questions/46700726/how-to-use-public-method-updateposition-of-react-virtualized
+          window.dispatchEvent(new Event("resize"));
+        }
+      );
+    });
   };
 
-  const { initLoading, loading, list } = state;
+  const { initLoading, loading, list } = tags;
   const loadMore =
     !initLoading && !loading ? (
       <div
         style={{
-          textAlign: "center",
           marginTop: 12,
-          height: 32,
-          lineHeight: "32px",
+          color: "#fa7328",
+          fontWeight: "600",
+          fontSize: "14px",
+          cursor: "pointer",
+          width: "max-content",
         }}
       >
-        <Button onClick={onLoadMore}>loading more</Button>
+        <p onClick={onLoadMore}>See more tags</p>
       </div>
     ) : null;
 
+  const selectTags = (key) => {
+    let data = tags.list.filter((e) => {
+      if (e.tag === key) {
+        e.isSelected = true;
+        return e;
+      } else {
+        return e;
+      }
+    });
+    setTags({ ...tags, data: data, list: data });
+    console.log(data);
+  };
+  console.log(tags);
   return (
     <List
-      className="demo-loadmore-list"
-      loading={initLoading}
-      itemLayout="horizontal"
+      column={4}
+      grid={{
+        gutter: 16,
+        span: 2,
+      }}
+      loading={loading}
+      itemLayout="vertical"
       loadMore={loadMore}
       dataSource={list}
       renderItem={(item) => (
-        <List.Item>
+        <List.Item style={{ marginBottom: "0px" }}>
           <Skeleton title={false} loading={loading}>
-            <Button>COntent</Button>
+            <button
+              className={clsx(
+                item.isSelected ? style.selected_tags : "",
+                style.tagsButton
+              )}
+              onClick={() => selectTags(item.tag)}
+            >
+              {item.tag}
+            </button>
           </Skeleton>
         </List.Item>
       )}

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import {
   CalendarOutlined,
@@ -7,22 +8,26 @@ import {
   DesktopOutlined,
 } from "@ant-design/icons";
 import { Tabs } from "antd";
+
+import style from "./index.module.css";
 import EventsSubCategory from "./EventsSubCategory";
-import { getEventsByParams } from "../../Api/apis";
 const { TabPane } = Tabs;
 
 export default function EventsCategory() {
   const [getFetchParams, setGetFetchParams] = useState({
     category: "ALL_EVENTS",
-    sub_category: "UPCOMING",
+    sub_category: "Upcoming",
     tags: [],
+    offset: 0,
+    page: 1,
   });
-  const [events, setEvents] = useState([]);
 
   function callback(key) {
     setGetFetchParams({
       ...getFetchParams,
       category: key,
+      page: 1,
+      offset: 0,
     });
   }
 
@@ -30,20 +35,33 @@ export default function EventsCategory() {
     setGetFetchParams({
       ...getFetchParams,
       sub_category: key,
+      page: 1,
+      offset: 0,
     });
   }
-
-  useEffect(() => {
-    getEventsByParams().then((res) => {
-      console.log("HEllo", res);
+  function setPagenumberAndOrder(key) {
+    setGetFetchParams({
+      ...getFetchParams,
+      page: key.page,
+      offset: key.offset,
     });
-  });
-  console.log("getFetchParams", getFetchParams);
+  }
+  function setTagsToMainState(key) {
+    let data = "";
+    key.forEach((element) => {
+      data += element.tag + ",";
+    });
+
+    setGetFetchParams({
+      ...getFetchParams,
+      tags: data,
+    });
+  }
   return (
     <div>
       <Tabs
         className="events_tab"
-        size="large"
+        size="small"
         activeKey={getFetchParams && getFetchParams.category}
         onChange={callback}
       >
@@ -59,6 +77,8 @@ export default function EventsCategory() {
           <EventsSubCategory
             getFetchParams={getFetchParams}
             setGetFetchParams={setSubcategory}
+            setPagenumberAndOrder={setPagenumberAndOrder}
+            setTagsToMainState={setTagsToMainState}
           />
         </TabPane>
         <TabPane
@@ -68,11 +88,13 @@ export default function EventsCategory() {
               Webinars
             </span>
           }
-          key="WEBINARS"
+          key="WEBINAR"
         >
           <EventsSubCategory
             getFetchParams={getFetchParams}
             setGetFetchParams={setSubcategory}
+            setPagenumberAndOrder={setPagenumberAndOrder}
+            setTagsToMainState={setTagsToMainState}
           />
         </TabPane>
         <TabPane
@@ -82,11 +104,13 @@ export default function EventsCategory() {
               Coding Events
             </span>
           }
-          key="CODING_EVENTS"
+          key="CODING_EVENT"
         >
           <EventsSubCategory
             getFetchParams={getFetchParams}
             setGetFetchParams={setSubcategory}
+            setPagenumberAndOrder={setPagenumberAndOrder}
+            setTagsToMainState={setTagsToMainState}
           />
         </TabPane>
         <TabPane
@@ -96,11 +120,13 @@ export default function EventsCategory() {
               Bootcamp Events
             </span>
           }
-          key="BOOTCAMP_EVENTS"
+          key="BOOTCAMP_EVENT"
         >
           <EventsSubCategory
             getFetchParams={getFetchParams}
             setGetFetchParams={setSubcategory}
+            setPagenumberAndOrder={setPagenumberAndOrder}
+            setTagsToMainState={setTagsToMainState}
           />
         </TabPane>
         <TabPane
@@ -115,6 +141,8 @@ export default function EventsCategory() {
           <EventsSubCategory
             getFetchParams={getFetchParams}
             setGetFetchParams={setSubcategory}
+            setPagenumberAndOrder={setPagenumberAndOrder}
+            setTagsToMainState={setTagsToMainState}
           />
         </TabPane>
       </Tabs>

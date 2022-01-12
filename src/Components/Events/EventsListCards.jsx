@@ -1,27 +1,15 @@
-import React from "react";
-import { Row, Col, List, Button, Space } from "antd";
+import React, { useEffect, useState } from "react";
+import { Row, Col, List, Button, Space, Pagination, Skeleton } from "antd";
 import EventCard from "../Cards/EventCard";
 
-export default function EventsListCards() {
-  const listData = [];
-  for (let i = 0; i < 23; i++) {
-    listData.push({
-      href: "https://ant.design",
-      title: `ant design part ${i}`,
-      avatar: "https://joeschmoe.io/api/v1/random",
-      description:
-        "Ant Design, a design language for background applications, is refined by Ant UED Team.",
-      content:
-        "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.",
+export default function EventsListCards({ events, setPagenumberAndOrder }) {
+  const callback = (key) => {
+    setPagenumberAndOrder({
+      page: key,
+      offset: (key - 1) * 20,
     });
-  }
+  };
 
-  const IconText = ({ icon, text }) => (
-    <Space>
-      {React.createElement(icon)}
-      {text}
-    </Space>
-  );
   return (
     <div>
       <List
@@ -36,19 +24,33 @@ export default function EventsListCards() {
         }}
         itemLayout="horizontal"
         size="large"
-        pagination={{
-          onChange: (page) => {
-            console.log(page);
-          },
-          pageSize: 8,
-        }}
-        dataSource={listData}
-        renderItem={(item) => (
-          <List.Item>
-            <EventCard />
-          </List.Item>
+        pagination={false}
+        dataSource={events.events}
+        renderItem={(event) => (
+          <Skeleton
+            avatar
+            paragraph={{ rows: 1 }}
+            active
+            loading={events === []}
+          >
+            <List.Item
+              style={{
+                padding: "0px 0px",
+              }}
+            >
+              <EventCard event={event} />
+            </List.Item>
+          </Skeleton>
         )}
       />
+
+      <Pagination
+        defaultCurrent={1}
+        onChange={callback}
+        siimple
+        style={{ float: "right" }}
+        total={events && events.page_count * 10}
+      ></Pagination>
     </div>
   );
 }

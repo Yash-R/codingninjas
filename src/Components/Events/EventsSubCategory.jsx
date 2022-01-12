@@ -8,11 +8,13 @@ const { TabPane } = Tabs;
 export default function EventsSubCategory({
   getFetchParams,
   setGetFetchParams,
+  events,
+  setPagenumberAndOrder,
+  setTagsToMainState,
 }) {
   function callback(key) {
     setGetFetchParams(key);
   }
-  console.log(getFetchParams);
   return (
     <div>
       <Tabs
@@ -21,14 +23,29 @@ export default function EventsSubCategory({
         activeKey={getFetchParams && getFetchParams.sub_category}
         onChange={callback}
       >
-        <TabPane tab={<span>Upcoming</span>} key="UPCOMING">
-          <EventsAndTagWrapper />
+        <TabPane tab={<span>Upcoming</span>} key="Upcoming">
+          <EventsAndTagWrapper
+            events={events}
+            getFetchParams={getFetchParams}
+            setPagenumberAndOrder={setPagenumberAndOrder}
+            setTagsToMainState={setTagsToMainState}
+          />
         </TabPane>
-        <TabPane tab={<span>Archived</span>} key="ARCHIVED">
-          Content of Tab Pane 2
+        <TabPane tab={<span>Archived</span>} key="Archived">
+          <EventsAndTagWrapper
+            events={events}
+            getFetchParams={getFetchParams}
+            setPagenumberAndOrder={setPagenumberAndOrder}
+            setTagsToMainState={setTagsToMainState}
+          />
         </TabPane>
-        <TabPane tab={<span>All Time Favorites</span>} key="All_TIME_FAVORITES">
-          Content of Tab Pane 3
+        <TabPane tab={<span>All Time Favorites</span>} key="All Time Favorites">
+          <EventsAndTagWrapper
+            events={events}
+            getFetchParams={getFetchParams}
+            setPagenumberAndOrder={setPagenumberAndOrder}
+            setTagsToMainState={setTagsToMainState}
+          />
         </TabPane>
       </Tabs>
     </div>
