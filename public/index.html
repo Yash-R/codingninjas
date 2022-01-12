@@ -24,6 +24,7 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <link rel="icon" type="image/x-icon" href="https://www.codingninjas.com/favicon.ico">
     <title>React App</title>
   </head>
   <body>
@@ -39,5 +40,34 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+
+    <script>
+      
+      //  document.addEventListener("scroll", {
+
+      //     const posicaoY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      //     console.log(posicaoY)
+      //     if (posicaoY > 90) {
+      //       let element = document.getElementsByClassName('app_header');
+      //       element.classList.add('header_active');
+      //     } else {
+      //     let element = document.getElementsByClassName('app_header');
+      //       element.classList.remove('header_active'); 
+      //     }
+        
+      //  })
+
+      document.addEventListener("scroll", function(){
+             const posicaoY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+          if (posicaoY > 75) {
+            let element = document.getElementById('app_header');
+            element.classList.add('header_active');
+          } else {
+          let element = document.getElementById('app_header');
+            element.classList.remove('header_active'); 
+          }
+      })
+
+    </script>
   </body>
 </html>

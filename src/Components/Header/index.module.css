@@ -1,0 +1,91 @@
+.header_logo {
+  height: 28px;
+  width: 75px;
+}
+
+.header_row {
+  height: 55px;
+  width: 100%;
+  max-width: 75%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header_menu_container {
+  min-width: 100% !important;
+  align-items: center;
+}
+.header_menu {
+  border-bottom: none !important;
+  background-color: transparent !important;
+  color: #d2d2d6 !important;
+  font-size: 12px !important;
+  letter-spacing: 0.5px !important;
+  font-weight: 600;
+}
+.header_menu_item {
+  text-decoration: none;
+  align-items: center;
+}
+.header_menuitem_content {
+  padding-right: 6px !important;
+}
+.header_menu_downarrow {
+  display: inline !important;
+}
+.header_menu_interviewdiscount {
+  display: inline !important;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background-color: #cbe5cc;
+  color: #37833b;
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 16px;
+}
+.header_menu_new {
+  display: inline;
+  background: #0a6dff;
+  border-radius: 2px;
+  padding: 2px 4px;
+  font-size: 11px;
+  font-weight: 700;
+  margin-left: 5px;
+  text-align: center;
+  color: #fff;
+}
+.header_login_button {
+  background-color: #feeee5 !important;
+  min-height: 32px !important;
+  padding: 6px 24px !important;
+  border-radius: 6px !important;
+  margin: 5px !important;
+  font-size: 13px !important;
+  letter-spacing: 0.3px !important;
+  color: #f9601e !important;
+}
+
+.header_login_button:hover {
+  color: #f9601e !important;
+  background-color: #fed5bf !important;
+}
+.header_enrol_button {
+  background-image: linear-gradient(270deg, #f96b24, #ff9100) !important;
+  min-height: 32px !important;
+  padding: 8px 24px !important;
+  border-radius: 6px !important;
+  margin: 5px !important;
+  font-size: 13px !important;
+  letter-spacing: 0.3px !important;
+  color: #ffffff !important;
+  border: none !important;
+  width: 130px !important;
+}
+.header_enrol_button:hover {
+  background-image: linear-gradient(270deg, #f96b24, #ff9100) !important;
+  background-color: #fed5bf !important;
+}

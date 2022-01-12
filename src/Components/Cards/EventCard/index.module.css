@@ -1,0 +1,30 @@
+.event_title {
+  margin: 0 0 9px;
+  font-size: 18px;
+  letter-spacing: 0.2px;
+  font-weight: 700;
+  min-height: 40px;
+}
+.event_sub_t1 {
+  color: #757575;
+  font-weight: 400;
+  margin-right: 5px;
+}
+.event_sub_t2 {
+  color: #212121;
+  font-weight: 600;
+  font-size: 14px;
+  width: 100%;
+}
+.event_content {
+  margin-top: 12px;
+  height: 57px;
+  font-size: 14px;
+  line-height: 19px;
+  color: #616161;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
