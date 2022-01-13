@@ -22,11 +22,9 @@ function App() {
             element={
               <>
                 <MainWrapper>
-                  <div style={{ marginTop: "10%" }}>
-                    <div className="events_headings">
-                      <div className="events_heading">
-                        Codinninja Assignment
-                      </div>
+                  <div className="assi_heading1">
+                    <div className="assi_heading2">
+                      <div className="assi_heading3">Codinninja Assignment</div>
                       <Link to="/events">
                         <Button size="large" className="check_assignment">
                           Check

@@ -7,6 +7,20 @@ body {
   -webkit-tap-highlight-color: transparent;
   font-family: "IBM Plex Sans", sans-serif;
 }
+@media only screen and (max-width: 800px) {
+  .assi_heading1 {
+    margin-top: 20% !important;
+  }
+  .assi_heading3 {
+    margin: 0 !important;
+    font-size: 28px !important;
+    line-height: 32px !important;
+    font-weight: 500 !important;
+    font-family: "IBM Plex Sans", sans-serif;
+    color: #f9f9fa;
+  }
+}
+
 .app_container {
   position: relative;
 }
@@ -35,12 +49,15 @@ body {
 .ant-card-actions {
   padding: 0 19px !important;
 }
-.events_headings {
+.assi_heading1 {
+  margin-top: 10%;
+}
+.assi_heading2 {
   height: 200px;
   width: 75%;
   margin: auto;
 }
-.events_heading {
+.assi_heading3 {
   margin: 0 !important;
   font-size: 40px;
   line-height: 52px;
