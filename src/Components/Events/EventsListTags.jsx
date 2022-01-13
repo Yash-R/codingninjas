@@ -103,7 +103,6 @@ export default function EventsListCards({ setTagsToMainState }) {
     setTags({ ...tags, data: data, list: data });
     console.log(data);
   };
-  console.log(tags);
   return (
     <List
       column={4}
@@ -116,7 +115,7 @@ export default function EventsListCards({ setTagsToMainState }) {
       loadMore={loadMore}
       dataSource={list}
       renderItem={(item) => (
-        <List.Item style={{ marginBottom: "0px" }}>
+        <List.Item key={item.tag} style={{ marginBottom: "0px" }}>
           <Skeleton title={false} loading={loading}>
             <button
               className={clsx(

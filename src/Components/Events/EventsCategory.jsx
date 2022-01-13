@@ -20,9 +20,9 @@ export default function EventsCategory() {
     tags: [],
     offset: 0,
     page: 1,
-  });
+  }); // all events by params
 
-  function callback(key) {
+  function setCategory(key) {
     setGetFetchParams({
       ...getFetchParams,
       category: key,
@@ -30,7 +30,7 @@ export default function EventsCategory() {
       page: 1,
       offset: 0,
     });
-  }
+  } // set category function
 
   function setSubcategory(key) {
     setGetFetchParams({
@@ -39,14 +39,15 @@ export default function EventsCategory() {
       page: 1,
       offset: 0,
     });
-  }
+  } // set subcategory function
+
   function setPagenumberAndOrder(key) {
     setGetFetchParams({
       ...getFetchParams,
       page: key.page,
       offset: key.offset,
     });
-  }
+  } // set pagen number and order function
   function setTagsToMainState(key) {
     let data = "";
     key.forEach((element) => {
@@ -57,14 +58,14 @@ export default function EventsCategory() {
       ...getFetchParams,
       tags: data,
     });
-  }
+  } // set all tags by concating
   return (
     <div>
       <Tabs
         className="events_tab"
         size="small"
         activeKey={getFetchParams && getFetchParams.category}
-        onChange={callback}
+        onChange={setCategory}
       >
         <TabPane
           tab={

@@ -16,7 +16,16 @@ export default function index() {
             <div className={style.events_subheading}>Learn, Compete & Grow</div>
           </div>
         </Col>
-        <Col span={20} style={{ margin: "auto" }}>
+        <Col
+          span={24}
+          xs={24}
+          sm={24}
+          md={20}
+          lg={20}
+          xl={20}
+          xxl={20}
+          style={{ margin: "auto" }}
+        >
           <EventsCategory></EventsCategory>
         </Col>
       </Row>

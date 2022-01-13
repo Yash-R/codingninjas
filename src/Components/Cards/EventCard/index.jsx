@@ -58,9 +58,8 @@ export default function EventCard({ event }) {
       }
       actions={[
         <>
-          {event.registration_status !== "REGISTRATIONS_OPEN" &&
-          check(event.registered_users.top_users) ? (
-            <div>
+          {check(event.registered_users.top_users) ? (
+            <div style={{ width: "100%" }}>
               <div className={style.event_card_registeruseravatar}>
                 {event &&
                   event.registered_users &&
@@ -83,16 +82,15 @@ export default function EventCard({ event }) {
                 </b>
                 others participated
               </div>
+              <Button className={style.register_button}>REGISTER NOW</Button>
             </div>
           ) : (
-            ""
-          )}
-        </>,
-        <>
-          {event.registration_status === "REGISTRATIONS_OPEN" ? (
-            <Button>REGISTER NOW</Button>
-          ) : (
-            ""
+            <Button
+              className={style.register_button}
+              style={{ float: "right" }}
+            >
+              REGISTER NOW
+            </Button>
           )}
         </>,
       ]}
