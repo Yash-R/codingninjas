@@ -12,16 +12,16 @@ export default function EventsSubCategory({
   setPagenumberAndOrder,
   setTagsToMainState,
 }) {
-  function callback(key) {
+  function setSubcategory(key) {
     setGetFetchParams(key);
-  }
+  } // set subcategory
   return (
     <div>
       <Tabs
         className="events_subcattab"
         size="large"
         activeKey={getFetchParams && getFetchParams.sub_category}
-        onChange={callback}
+        onChange={setSubcategory}
       >
         <TabPane tab={<span>Upcoming</span>} key="Upcoming">
           <EventsAndTagWrapper

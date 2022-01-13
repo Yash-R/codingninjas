@@ -15,6 +15,7 @@ export default function EventsTagWrapper({
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => {
+    // from api
     await getEventsByParams(
       getFetchParams.category,
       getFetchParams.sub_category,
@@ -30,7 +31,6 @@ export default function EventsTagWrapper({
       });
   }, [getFetchParams]);
 
-  console.log("events", getFetchParams);
   return (
     <Row
       justify="space-between"
