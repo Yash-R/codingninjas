@@ -8,7 +8,6 @@ export default function MenuItems({ mockInterviews }) {
   const [current, setCurrent] = useState({ current: "mail" });
 
   const handleClick = (e) => {
-    console.log("click ", e);
     setCurrent({ current: e.key });
   };
 

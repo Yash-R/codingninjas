@@ -101,7 +101,6 @@ export default function EventsListCards({ setTagsToMainState }) {
       }
     });
     setTags({ ...tags, data: data, list: data });
-    console.log(data);
   };
   return (
     <List
