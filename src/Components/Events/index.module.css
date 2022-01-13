@@ -1,0 +1,63 @@
+@media only screen and (max-width: 800px) {
+  .events_heading {
+    font-size: 32px !important;
+  }
+  .events_subheading {
+    font-size: 18px !important;
+  }
+  .event_main_row {
+    margin-top: 80px !important;
+  }
+  .events_headings {
+    height: 150px !important  ;
+  }
+}
+.event_main {
+  top: 100px;
+  width: 100%;
+}
+.event_main_row {
+  width: 100%;
+  display: inline-block !important;
+  vertical-align: top;
+  margin-top: -300px;
+  padding-bottom: 70px;
+}
+.events_headings {
+  height: 200px;
+}
+.events_heading {
+  margin: 0;
+  font-size: 40px;
+  line-height: 52px;
+  font-weight: 700;
+  font-family: "IBM Plex Sans", sans-serif;
+  color: #f9f9fa;
+}
+.events_subheading {
+  font-size: 20px;
+  line-height: 30px;
+  margin-top: 2px;
+  margin-left: 4px;
+  font-weight: 700;
+  font-family: "IBM Plex Sans", sans-serif;
+  color: #f9f9fa;
+}
+
+.tagsButton {
+  color: #424242;
+  font-size: 14px;
+  padding: 6px 12px;
+  font-weight: 400;
+  border-radius: 2px;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  background: #eee;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+}
+.selected_tags {
+  color: #fff !important;
+  background: #fa7328 !important;
+}
