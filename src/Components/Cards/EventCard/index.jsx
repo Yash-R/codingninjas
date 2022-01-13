@@ -132,7 +132,14 @@ export default function EventCard({ event }) {
         <Divider style={{ margin: "0px" }} />
         <Col span={24}>
           <div className={style.event_content}>{event && event.short_desc}</div>
-          <div className={style.event_content_1}></div>
+
+          <div className={style.event_content_1}>
+            {event &&
+              event.card_tags &&
+              event.card_tags.map((tag) => {
+                return <button className={style.tagsButton}>{tag}</button>;
+              })}
+          </div>
         </Col>
       </Row>
     </Card>
