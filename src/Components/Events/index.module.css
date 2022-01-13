@@ -21,6 +21,7 @@
   display: inline-block !important;
   vertical-align: top;
   margin-top: -300px;
+  padding-bottom: 70px;
 }
 .events_headings {
   height: 200px;

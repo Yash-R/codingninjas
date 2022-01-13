@@ -28,8 +28,9 @@ body {
   overflow: auto;
 }
 .app_footer {
-  /* position: absolute; */
-  /* bottom: 0; */
+  background: #0a2541;
+  justify-content: center;
+  padding: 50px 70px;
 }
 .ant-card-actions {
   padding: 0 19px !important;

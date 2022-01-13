@@ -1,6 +1,7 @@
 import "./App.css";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Header from "./Components/Header"; // Header
+import Footer from "./Components/Footer"; //Footer
 import MainWrapper from "./Components/MainWrapper"; // Main Wrapper Component
 import Events from "./Components/Events"; // Events Main Compinent
 
@@ -30,7 +31,9 @@ function App() {
         </Routes>
       </div>
 
-      {/* <footer className="app_footer">footerrrrrrrrrrrrrrrrr</footer> */}
+      <footer className="app_footer">
+        <Footer />
+      </footer>
     </div>
   );
 }

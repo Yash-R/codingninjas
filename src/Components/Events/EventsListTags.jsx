@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { List, Avatar, Button, Skeleton } from "antd";
+import { List, Skeleton } from "antd";
 import clsx from "clsx";
 import { getTags } from "../../Api/apis";
 import style from "./index.module.css";
@@ -29,6 +29,7 @@ export default function EventsListCards({ setTagsToMainState }) {
     });
   }, [setTags]);
   useEffect(() => {
+    // eslint-disable-next-line array-callback-return
     let data = tags.list.filter((e) => {
       if (e.isSelected) {
         return e;
@@ -93,7 +94,7 @@ export default function EventsListCards({ setTagsToMainState }) {
   const selectTags = (key) => {
     let data = tags.list.filter((e) => {
       if (e.tag === key) {
-        e.isSelected = true;
+        e.isSelected = !e.isSelected;
         return e;
       } else {
         return e;

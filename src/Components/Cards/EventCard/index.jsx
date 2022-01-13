@@ -1,6 +1,5 @@
 /* eslint-disable array-callback-return */
 import React from "react";
-import moment from "moment";
 import Moment from "react-moment";
 import { Avatar, Tooltip, Card, Row, Col, Divider, Button } from "antd";
 

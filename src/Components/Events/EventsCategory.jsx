@@ -26,6 +26,7 @@ export default function EventsCategory() {
     setGetFetchParams({
       ...getFetchParams,
       category: key,
+      sub_category: "Upcoming",
       page: 1,
       offset: 0,
     });

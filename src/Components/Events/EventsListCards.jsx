@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Row, Col, List, Button, Space, Pagination, Skeleton } from "antd";
+import React from "react";
+import { List, Pagination, Skeleton } from "antd";
 import EventCard from "../Cards/EventCard";
 
 export default function EventsListCards({ events, setPagenumberAndOrder }) {
@@ -49,7 +49,7 @@ export default function EventsListCards({ events, setPagenumberAndOrder }) {
         onChange={callback}
         siimple
         style={{ float: "right" }}
-        total={events && events.page_count * 10}
+        total={events && events.page_count ? events.page_count * 10 : 0}
       ></Pagination>
     </div>
   );
