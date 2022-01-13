@@ -99,7 +99,7 @@
 .event_card_registeruseravatar {
   float: left;
   display: block;
-  width: 65%;
+  width: 56%;
 }
 .register_button {
   background: linear-gradient(90deg, #fa7328, #ee9f15) !important;
