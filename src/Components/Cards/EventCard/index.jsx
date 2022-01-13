@@ -74,16 +74,16 @@ export default function EventCard({ event }) {
                       </Tooltip>
                     );
                   })}
-                <div className={style.event_card_registeruser}>
-                  and{" "}
-                  <b style={{ color: "#000" }}>
-                    {event.registered_users.other_users_count}{" "}
-                  </b>
-                  others participated
-                </div>
               </div>
 
               <Button className={style.register_button}>REGISTER NOW</Button>
+              <div className={style.event_card_registeruser}>
+                and{" "}
+                <b style={{ color: "#000" }}>
+                  {event.registered_users.other_users_count}{" "}
+                </b>
+                others participated
+              </div>
             </div>
           ) : (
             <Button
